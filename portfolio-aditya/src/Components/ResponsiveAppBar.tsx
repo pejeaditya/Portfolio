@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['Case Studies', 'Testimonials', 'Recent Work', 'Get in Touch'];
+const pages = [{ name: 'About Me', href: 'aboutMe' }, { name: 'Case Studies', href: 'caseStudies' }, { name: 'Career Highlights', href: 'careerHighlights' }, { name: 'Techologies', href: 'technologies' }, { name: 'Get in Touch', href: 'contactUs' }];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
@@ -34,10 +34,18 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const scrollToSection = (id: string) => {
+    console.log('strig:',id);
+    const element = document.getElementById(id);
+    if (element) {
+      console.log("in if");
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
 
   return (
-    <AppBar position="static" sx={{backgroundColor:'black'}}>
-      <Container maxWidth="xl" sx={{backgroundColor:'black'}}>
+    <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
+      <Container maxWidth="xl" sx={{ backgroundColor: 'black' }}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -86,8 +94,8 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: 'center'}}>{page}</Typography>
+                <MenuItem key={page.name} onClick={() => { handleCloseNavMenu(); scrollToSection(page.href); }}>
+                  <Typography sx={{ textAlign: 'center' }}>{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -114,11 +122,11 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent: 'space-evenly' } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.name}
+                onClick={() => { handleCloseNavMenu(); scrollToSection(page.href); }}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

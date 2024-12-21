@@ -1,6 +1,9 @@
-import { Paper, styled } from "@mui/material";
+import { Container, Paper, styled } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import TpCard from "./TpCard";
+import { Padding } from "@mui/icons-material";
+import TechnologiesCard from "./TechnologiesCard";
+
 
 
 
@@ -16,12 +19,12 @@ export default function Technologies() {
     }),
   }));
   return (
-    <div>
-      <Grid container spacing={{xs:2 , lg: 3}}>
-        <Grid size={{xs: 6,lg: 4}}>
-        <TpCard />
-        </Grid>
-        <Grid size={{xs: 6,lg: 4}}>
+    <Container sx={{padding: '30px'}}>
+      <Grid container spacing={{xs:2 , lg: 4}}>
+        {/* <Grid size={{xs: 6,lg: 4}} >
+        <TechnologiesCard />
+        </Grid> */}
+        {/* <Grid size={{xs: 6,lg: 4}}>
             <TpCard />
         </Grid>
         <Grid size={{xs: 6, lg: 4}}>
@@ -36,8 +39,8 @@ export default function Technologies() {
         <Grid size={{xs: 6, lg: 4}}>
         <TpCard />
         </Grid>
-        
+         */}
       </Grid>
-    </div>
+    </Container>
   );
 }

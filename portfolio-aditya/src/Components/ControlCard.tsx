@@ -12,6 +12,7 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import Container from "@mui/material/Container";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
+import AboutMe from "./AboutMe";
 
 export default function ControlCard() {
   const theme = useTheme();
@@ -26,7 +27,7 @@ export default function ControlCard() {
   );
 
   return (
-    <Container sx={{backgroundColor:"black"}}>
+    <Container sx={{backgroundColor:"black", padding:'40px'}}>
       <Card sx={{ display: "flex", maxHeight: "xl", backgroundColor:"black"}}>
           <Container
             style={{
@@ -59,10 +60,10 @@ export default function ControlCard() {
 
             <CardActions>
             <Button sx={{ 
-        backgroundColor: 'green', // Change this to your desired color
-        color: 'white', // Ensures the text color contrasts with the background
+        backgroundColor: 'green', 
+        color: 'white', 
         '&:hover': {
-          backgroundColor: 'darkgreen', // Change this to your desired hover color
+          backgroundColor: 'darkgreen',
         }
       }} variant="contained">Get to know more</Button>
             </CardActions>
@@ -79,6 +80,7 @@ export default function ControlCard() {
           alt="tpp"
         />
       </Card>
+     <AboutMe />
     </Container>
   );
 }

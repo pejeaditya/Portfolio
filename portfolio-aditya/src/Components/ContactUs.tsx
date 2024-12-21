@@ -43,7 +43,7 @@ export default function ContactUs() {
 `;
 
   return (
-    <div style={{backgroundColor: "black",display:"flex",flexDirection:'column', alignItems:'center'}}>
+    <div id="contactUs" style={{backgroundColor: "black",display:"flex",flexDirection:'column', alignItems:'center'}}>
       <Typography
         gutterBottom
         component="div"

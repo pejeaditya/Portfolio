@@ -34,7 +34,8 @@ export default function CaseStudies() {
   }));
 
   return (
-    <Container>
+    <div id="caseStudies">
+    <Container >
       <div
         style={{
           display: "flex",
@@ -244,5 +245,6 @@ export default function CaseStudies() {
         </CardActions>
       </Card>
     </Container>
+    </div>
   );
 }

@@ -22,7 +22,7 @@ export default function CareerHighlights() {
   );
   // sx={{marginBottom:'20px'}}
   return (
-    <div style={{ backgroundColor: "black" , padding:'30px 0px 30px 0px', alignContent:'center'}}>
+    <div id="careerHighlights" style={{ backgroundColor: "black" , padding:'30px 0px 30px 0px', alignContent:'center'}}>
         
         <div style={{display:"flex",flexDirection:'column', alignItems:'center',}}>
       <Typography
