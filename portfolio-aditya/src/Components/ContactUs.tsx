@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
+import { inputLabelClasses } from "@mui/material/InputLabel";
+
 
 export default function ContactUs() {
   const [value, setValue] = React.useState("");
@@ -39,11 +41,11 @@ export default function ContactUs() {
   margin-top: 10px;
   color: #c21f39 !important;
   font-family: AvenirNextLTPro-Regular;
-  font-size: 14px;
+  font-size: 1.0rem;
 `;
   return (
-    <div id="contactUs" style={{ display:"flex", flexDirection:'column',alignItems:'center', backgroundColor:'black'}} >
-      <Card sx={{minWidth:350 ,margin:'10px auto', backgroundColor:'black',display:"flex", flexDirection:'column',alignItems:'center'}}>
+    <div id="contactUs" style={{ display:"flex", flexDirection:'column',alignItems:'center', backgroundColor:'black',width:'100%'}} >
+      <Card sx={{width:'100%', backgroundColor:'black',display:"flex", flexDirection:'column',alignItems:'center',  padding:"20px"}}>
       <Typography
         gutterBottom
         component="div"
@@ -68,7 +70,7 @@ export default function ContactUs() {
           </Typography>
         </div>
         <div>
-        <CardContent sx={{width:'90%'}}>
+        <CardContent sx={{width:'90%', minWidth:'365px'}}>
 
      
         <form>
@@ -80,7 +82,26 @@ export default function ContactUs() {
             marginTop: "10px",
             borderRadius: "10px",
           }}
-          typeof="number"
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+
+         variant="outlined"
           fullWidth
           id="demo-helper-text-aligned-no-helper"
           label="First Name"
@@ -94,6 +115,24 @@ export default function ContactUs() {
             backgroundColor: "white",
             marginTop: "50px",
             borderRadius: "10px",
+          }}
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
           }}
           typeof="number"
           fullWidth
@@ -110,10 +149,29 @@ export default function ContactUs() {
             marginTop: "50px",
             borderRadius: "10px",
           }}
+
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
           type="email"
+          label='Email'
           fullWidth
           id="demo-helper-text-aligned-no-helper"
-          label="Email"
           required
         />
         </Grid>
@@ -127,6 +185,7 @@ export default function ContactUs() {
           value={value}
           fullWidth
           onChange={handleChange}
+          placeholder="Contact No.*"
         />
         {error && <InputValidationError >**Invalid Number</InputValidationError>}
         </Grid>
@@ -135,8 +194,26 @@ export default function ContactUs() {
         <TextField
           sx={{
             backgroundColor: "white",
-            marginTop: "50px",
+            marginTop: "40px",
             borderRadius: "10px",
+          }}
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
           }}
           multiline rows={5}
           id="demo-helper-text-aligned-no-helper"
