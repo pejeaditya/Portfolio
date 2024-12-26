@@ -1,8 +1,8 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Card, CardContent, Container, Typography } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import React, { useState } from "react";
-
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
@@ -41,17 +41,17 @@ export default function ContactUs() {
   font-family: AvenirNextLTPro-Regular;
   font-size: 14px;
 `;
-
   return (
-    <div id="contactUs" style={{backgroundColor: "black",display:"flex",flexDirection:'column', alignItems:'center'}}>
+    <div id="contactUs" style={{ display:"flex", flexDirection:'column',alignItems:'center', backgroundColor:'black'}} >
+      <Card sx={{minWidth:350 ,margin:'10px auto', backgroundColor:'black',display:"flex", flexDirection:'column',alignItems:'center'}}>
       <Typography
         gutterBottom
         component="div"
         variant="h4"
+        color="white"
         sx={{
           width: "213px",
           height: "40px",
-          color: "white",
           textAlign: "center",
           paddingTop: "50px",
         }}
@@ -62,67 +62,110 @@ export default function ContactUs() {
           <Typography
             variant="body2"
             component="div"
-            sx={{ color: "white" }}
+            color="white"
           >
             Tilte of the  Get In Touch
           </Typography>
         </div>
+        <div>
+        <CardContent sx={{width:'90%'}}>
 
-      <Container
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      >
+     
+        <form>
+          <Grid  spacing={1}>
+            <Grid size={{xs:12 , sm:6}}>
         <TextField
           sx={{
             backgroundColor: "white",
-            width: "50%",
+            marginTop: "10px",
+            borderRadius: "10px",
+          }}
+          typeof="number"
+          fullWidth
+          id="demo-helper-text-aligned-no-helper"
+          label="First Name"
+          placeholder="Enter first name"
+          required
+        />
+        </Grid>
+        <Grid size={{xs:12 , sm:6}}>
+        <TextField
+          sx={{
+            backgroundColor: "white",
             marginTop: "50px",
             borderRadius: "10px",
           }}
           typeof="number"
+          fullWidth
           id="demo-helper-text-aligned-no-helper"
-          label="Name"
+          label="Last Name"
+          placeholder="Enter last name"
+          required
         />
-        <>
+        </Grid>
+        <Grid size={{xs:12 , sm:6}}>
+        <TextField
+          sx={{
+            backgroundColor: "white",
+            marginTop: "50px",
+            borderRadius: "10px",
+          }}
+          type="email"
+          fullWidth
+          id="demo-helper-text-aligned-no-helper"
+          label="Email"
+          required
+        />
+        </Grid>
+        <Grid size={{xs:12 , sm:6}}>
         <MuiTelInput
           style={{
             backgroundColor: "white",
-            width: "50%",
             marginTop: "50px",
             borderRadius: "10px",
           }}
           value={value}
+          fullWidth
           onChange={handleChange}
         />
         {error && <InputValidationError >**Invalid Number</InputValidationError>}
-        </>
+        </Grid>
         <br />
+        <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
-            width: "50%",
             marginTop: "50px",
             borderRadius: "10px",
           }}
+          multiline rows={5}
           id="demo-helper-text-aligned-no-helper"
           label="Message"
+          fullWidth
+          required
         />
+        </Grid>
         <br />
 
         <Button
           sx={{
-            margin: "25px",
             backgroundColor: "green", 
-            width: "30%",
             color: "white", 
             "&:hover": {
               backgroundColor: "darkgreen", 
             },
           }}
+          type="submit"
           variant="contained"
+          fullWidth
         >
           Submit
         </Button>
-      </Container>
+        </Grid>
+        </form>
+        </CardContent>
+      </div>
+      </Card>
     </div>
   );
 }
