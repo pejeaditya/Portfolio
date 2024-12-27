@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Typography, Paper, styled, Container } from '@mui/material';
+import { Box, Typography, Paper, styled, Container,useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid2'; // Importing Grid2 component
 // Replace with actual icons as needed
 import AwsIcon from '@mui/icons-material/Cloud'; 
@@ -11,15 +11,27 @@ const RootBox = styled(Box)({
   padding: '20px',
   backgroundColor: '#f0f4ff',
   borderRadius: '10px',
-  minHeight:'150px'
+  minHeight:'150px',
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+  '&:hover': {
+    transform: "scale(1.05)",
+    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.8)",
+  },
+
 });
 
 const StyledPaper = styled(Paper)({
   padding: '10px',
   textAlign: 'center',
+  minHeight: '60px',
   color: '#000',
   backgroundColor: '#fff',
   borderRadius: '10px',
+  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.8)",
+                  },
 });
 
 interface CategoryCardProps {
@@ -27,27 +39,87 @@ interface CategoryCardProps {
   items: { icon: React.ElementType, label: string }[];
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ title, items }) => (
-  <RootBox>
-    <Typography variant="h6" gutterBottom>
+
+const CategoryCard: React.FC<CategoryCardProps> = ({ title, items }) => {
+  const theme = useTheme();
+  return (
+  
+  <RootBox sx={{justifyContent:'center',alignItems:'center',[theme.breakpoints.between('xs', 'md')]: {
+   padding:'10px',
+    minHeight:'250px',
+  },[theme.breakpoints.up('md')]: {
+   minHeight:'250px'
+  },
+ 
+  }}>
+    <Typography 
+    sx={{
+      margin:'10px',
+      [theme.breakpoints.down('sm')]: {
+        fontSize: '1.00rem',
+      },
+      [theme.breakpoints.between('sm', 'md')]: {
+        fontSize: '1.5rem',
+      },
+      [theme.breakpoints.up('md')]: {
+        fontSize: '1.5rem',
+      },
+      textAlign:'center'
+    }}
+   >
       {title}
     </Typography>
+    <div >
     <Grid container spacing={2}>
       {items.map((item, index) => (
         <Grid size={{xs:6 }}>
-          <StyledPaper>
-            <item.icon style={{ marginRight: '10px' }} />
+          <StyledPaper >
+          <item.icon 
+                style={{ 
+                  fontSize: 'inherit' 
+                }} 
+                sx={{
+                  [theme.breakpoints.down('sm')]: {
+                    fontSize: '1rem',
+                  },
+                  [theme.breakpoints.between('sm', 'md')]: {
+                    fontSize: '1.25rem',
+                  },
+                  [theme.breakpoints.up('md')]: {
+                    fontSize: '1.5rem',
+                  },
+                }}
+              /><Typography 
+              variant="body2"
+              sx={{
+                [theme.breakpoints.down('sm')]: {
+                  fontSize: '0.75rem',
+                },
+                [theme.breakpoints.between('sm', 'md')]: {
+                  fontSize: '1rem',
+                },
+                [theme.breakpoints.up('md')]: {
+                  fontSize: '1.25rem',
+                },
+                overflow:'hidden'
+              }}
+            >
             {item.label}
+            </Typography>
           </StyledPaper>
         </Grid>
+        
       ))}
     </Grid>
+    </div>
   </RootBox>
-);
+  )
+};
 
 export  default function TechnologiesCard() {
+
     return(
-      <Container id="technologies" sx={{padding: '30px', display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <Container id="technologies" sx={{paddingRight: '30px', display:'flex', flexDirection:'column', alignItems:'center'}}>
         <Typography
         gutterBottom
         component="div"
@@ -69,7 +141,7 @@ export  default function TechnologiesCard() {
             Tilte of the  Get In Touch
           </Typography>
         </div>
-        <div style={{padding:'40px'}}>
+        <div>
       <Grid container spacing={{xs:2 , lg: 4}}>
       <Grid size={{xs: 6,lg: 4}} >
     <CategoryCard
@@ -124,7 +196,9 @@ export  default function TechnologiesCard() {
       title="Languages"
       items={[
         { icon: AwsIcon, label: 'Java' },
-        { icon: AzureIcon, label: 'React js' }
+        { icon: AzureIcon, label: 'React js' },
+        { icon: AzureIcon, label: 'Python' },
+        { icon: AzureIcon, label: 'Powershell' }
       ]}
     />
     </Grid>

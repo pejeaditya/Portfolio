@@ -73,7 +73,7 @@ export default function CaseStudies() {
             component="img"
             image={require(`../ustils/Maskgroup.png`)}
             alt="green iguana"
-            sx={{ width: "30%", height: "30%", margin: "25px" }}
+            sx={{ width: "40%", height: "70%" }}
           />
 
           <CardContent sx={{ margin: "25px" }}>

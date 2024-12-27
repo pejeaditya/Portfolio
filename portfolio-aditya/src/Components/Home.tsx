@@ -1,12 +1,9 @@
-import AboutMe from "./AboutMe";
 import CareerHighlights from "./CareerHighlights";
 import CaseStudies from "./CaseStudies";
 import ContactUs from "./ContactUs";
 import ControlCard from "./ControlCard";
 import ResponsiveAppBar from "./ResponsiveAppBar";
-import Technologies from "./Technologies";
 import TechnologiesCard from "./TechnologiesCard";
-import TpCard from "./TpCard";
 
 
 const Home = () => {

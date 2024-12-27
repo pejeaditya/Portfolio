@@ -6,8 +6,10 @@ import {
   CardContent,
   Container,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useState } from "react";
+import { transform } from "typescript";
 
 export default function CareerHighlights() {
   const [educationDetails, setEducationDetails] = useState(false);
@@ -16,6 +18,7 @@ export default function CareerHighlights() {
     educationDetails: false,
     researchDetails: false
   })
+  const theme = useTheme();
   const [buttonColor, setButtonColor] = useState({
     careerDetails: 'green',
     educationDetails: '#5A5A5A',
@@ -84,7 +87,7 @@ export default function CareerHighlights() {
           sx={{
             margin: "25px",
             backgroundColor: buttonColor.careerDetails,
-            width: "30%",
+            width: "50%",
             color: "white",
             "&:hover": {
               backgroundColor: "darkgreen",
@@ -93,14 +96,25 @@ export default function CareerHighlights() {
           variant="contained"
           onClick={() =>{ handleButton('careerDetails'); setEducationDetails(false);}}
         >
-          Career Details
+           <Typography sx={{
+                                margin: '10px',
+                                [theme.breakpoints.down('sm')]: {
+                                    fontSize: '0.8rem',
+                                },
+                                [theme.breakpoints.between('sm', 'md')]: {
+                                    fontSize: '1.0rem',
+                                },
+                                [theme.breakpoints.up('md')]: {
+                                    fontSize: '0.8rem',
+                                },
+                            }} variant="body1">Career Details</Typography>
         </Button>
 
         <Button
           sx={{
             margin: "25px",
             backgroundColor: buttonColor.educationDetails,
-            width: "30%",
+            width: "50%",
             color: "white",
             "&:hover": {
               backgroundColor: "darkgreen",
@@ -109,14 +123,25 @@ export default function CareerHighlights() {
           variant="contained"
           onClick={() => { handleButton('educationDetails'); setEducationDetails(true);}}
         >
-          Educational Details
+           <Typography sx={{
+                                margin: '10px',
+                                [theme.breakpoints.down('sm')]: {
+                                    fontSize: '0.8rem',
+                                },
+                                [theme.breakpoints.between('sm', 'md')]: {
+                                    fontSize: '1.0rem',
+                                },
+                                [theme.breakpoints.up('md')]: {
+                                    fontSize: '0.8rem',
+                                },
+                            }} variant="body1">Educational Details</Typography>
         </Button>
 
         <Button
           sx={{
             margin: "25px",
             backgroundColor: buttonColor.researchDetails,
-            width: "30%",
+            width: "50%",
             color: "white",
             "&:hover": {
               backgroundColor: "darkgreen",
@@ -125,7 +150,18 @@ export default function CareerHighlights() {
           variant="contained"
           onClick={() => { handleButton('researchDetails'); setEducationDetails(true);}}
         >
-          Research Details
+          <Typography sx={{
+                                margin: '10px',
+                                [theme.breakpoints.down('sm')]: {
+                                    fontSize: '0.8rem',
+                                },
+                                [theme.breakpoints.between('sm', 'md')]: {
+                                    fontSize: '1.0rem',
+                                },
+                                [theme.breakpoints.up('md')]: {
+                                    fontSize: '0.8rem',
+                                },
+                            }} variant="body1">Research Details</Typography>
         </Button>
       </Container>
 
@@ -134,17 +170,18 @@ export default function CareerHighlights() {
           <Container>
             <div
               style={{
-                border: "solid",
-                borderLeftColor: "green",
                 margin: "20px",
               }}
             >
               <Card
-                variant="outlined"
                 sx={{
-                  marginBottom: "15px",
-                  borderStyle: "solid",
-                  backgroundColor: "black",
+                 backgroundColor:'#1D1D1D',
+                 borderRadius: "10px",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
                 }}
               >
                 <CardContent>
@@ -176,8 +213,6 @@ export default function CareerHighlights() {
 
             <div
               style={{
-                border: "solid",
-                borderLeftColor: "green",
                 margin: "20px",
               }}
             >
@@ -186,7 +221,13 @@ export default function CareerHighlights() {
                 sx={{
                   marginBottom: "15px",
                   borderStyle: "solid",
-                  backgroundColor: "black",
+                  borderRadius: "10px",
+                  backgroundColor: "#1D1D1D",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
                 }}
               >
                 <CardContent>
@@ -224,8 +265,14 @@ export default function CareerHighlights() {
               variant="outlined"
               sx={{
                 marginBottom: "15px",
-                borderLeftStyle: "solid",
-                borderLeftColor: "green",
+                borderRadius: "10px",
+                  backgroundColor: "#1D1D1D",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
+                
               }}
             >
               <CardContent>
@@ -233,7 +280,7 @@ export default function CareerHighlights() {
                   gutterBottom
                   sx={{ color: "text.secondary", fontSize: 14 }}
                 >
-                  Research Details
+                  Career Details
                 </Typography>
                 <Typography variant="h5" component="div">
                   be{bull}nev{bull}o{bull}lent
@@ -258,8 +305,14 @@ export default function CareerHighlights() {
               variant="outlined"
               sx={{
                 marginBottom: "15px",
-                borderLeftStyle: "solid",
-                borderLeftColor: "green",
+                borderRadius: "10px",
+                  backgroundColor: "#1D1D1D",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
+                
               }}
             >
               <CardContent>
@@ -296,14 +349,19 @@ export default function CareerHighlights() {
               variant="outlined"
               sx={{
                 marginBottom: "15px",
-                borderLeftStyle: "solid",
-                borderLeftColor: "green",
-              }}
+                borderRadius: "10px",
+                  backgroundColor: "#1D1D1D",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
+                }}
             >
               <CardContent>
                 <Typography
                   gutterBottom
-                  sx={{ color: "text.secondary", fontSize: 14 }}
+                  sx={{ color: "text.secondary"}}
                 >
                   Career Details
                 </Typography>
@@ -330,9 +388,14 @@ export default function CareerHighlights() {
               variant="outlined"
               sx={{
                 marginBottom: "15px",
-                borderLeftStyle: "solid",
-                borderLeftColor: "green",
-              }}
+                borderRadius: "10px",
+                  backgroundColor: "#1D1D1D",
+                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  '&:hover': {
+                    transform: "scale(1.05)",
+                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+                  },
+                }}
             >
               <CardContent>
                 <Typography
