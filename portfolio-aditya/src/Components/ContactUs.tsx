@@ -2,16 +2,24 @@ import { Button, Card, CardContent, Container, Typography } from "@mui/material"
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
 import { inputLabelClasses } from "@mui/material/InputLabel";
+import emailjs, { sendForm } from '@emailjs/browser';
 
 
 export default function ContactUs() {
   const [value, setValue] = React.useState("");
   const [error, setError] = useState(true);
+  const [formData, setFormData] = useState({
+    from_first_name: '',
+    from_last_name: '',
+    phone_number: '',
+    from_email:'',
+    message: '',
+  });
 
   const filterPhoneNumber = (phoneNumber: string) => {
     // Remove the part from + to the next space
@@ -19,8 +27,12 @@ export default function ContactUs() {
     const filtered = filteredPhoneNumber.replace(/[^\d]/g, "");
     return filtered;
   };
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleChange = (newValue: any) => {
+  const handlePhoneChange = (newValue: any) => {
     matchIsValidTel(newValue, {
       onlyCountries: ["IN"],
       excludedCountries: [],
@@ -34,9 +46,28 @@ export default function ContactUs() {
     if (phoneValue.length === 10) {
       setError(false);
     }
+    setFormData({ ...formData, phone_number: phoneValue });
     console.log(phoneValue);
     console.log(error);
   };
+
+  
+
+  const handleSubmit = (e:  any) => {
+    e.preventDefault();
+console.log("in submit", formData);
+    emailjs.send('service_0q06xmr', 'template_of6jpq9', formData, 'agfr9XFUGhyjUYlwj')
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('Email sent successfully!');
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        alert('Failed to send email.');
+      });
+  };
+
+
   const InputValidationError = styled.span`
   margin-top: 10px;
   color: #c21f39 !important;
@@ -73,7 +104,7 @@ export default function ContactUs() {
         <CardContent sx={{width:'90%', minWidth:'365px'}}>
 
      
-        <form>
+        <form onSubmit={handleSubmit}>
           <Grid  spacing={1}>
             <Grid size={{xs:12 , sm:6}}>
         <TextField
@@ -100,6 +131,9 @@ export default function ContactUs() {
               },
             },
           }}
+          name='from_first_name'
+          value={formData.from_first_name}
+          onChange={handleChange}
 
          variant="outlined"
           fullWidth
@@ -134,12 +168,14 @@ export default function ContactUs() {
               },
             },
           }}
-          typeof="number"
           fullWidth
           id="demo-helper-text-aligned-no-helper"
           label="Last Name"
           placeholder="Enter last name"
           required
+          name='from_last_name'
+          value={formData.from_last_name}
+          onChange={handleChange}
         />
         </Grid>
         <Grid size={{xs:12 , sm:6}}>
@@ -173,6 +209,9 @@ export default function ContactUs() {
           fullWidth
           id="demo-helper-text-aligned-no-helper"
           required
+          name='from_email'
+          value={formData.from_email}
+          onChange={handleChange}
         />
         </Grid>
         <Grid size={{xs:12 , sm:6}}>
@@ -184,7 +223,7 @@ export default function ContactUs() {
           }}
           value={value}
           fullWidth
-          onChange={handleChange}
+          onChange={handlePhoneChange}
           placeholder="Contact No.*"
         />
         {error && <InputValidationError >**Invalid Number</InputValidationError>}
@@ -220,6 +259,9 @@ export default function ContactUs() {
           label="Message"
           fullWidth
           required
+          name='message'
+          value={formData.message}
+          onChange={handleChange}
         />
         </Grid>
         <br />
