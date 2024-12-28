@@ -16,6 +16,8 @@ const RootBox = styled(Box)({
   '&:hover': {
     transform: "scale(1.05)",
     boxShadow: "0 4px 20px rgba(0, 0, 0, 0.8)",
+   backgroundColor: '#2BA837',
+   color:"white"
   },
 
 });
@@ -29,8 +31,8 @@ const StyledPaper = styled(Paper)({
   borderRadius: '10px',
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
                   '&:hover': {
-                    transform: "scale(1.05)",
-                    boxShadow: "0 4px 20px rgba(0, 0, 0, 0.8)",
+                     backgroundColor: '#61CE70',
+   color:"white"
                   },
 });
 

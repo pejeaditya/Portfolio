@@ -8,13 +8,8 @@ import rocket from '../assets/rocket.svg'
 import send from '../assets/send.svg'
 import uxdesign from '../assets/ux-design.svg'
 
-const CustomCard1 = styled(Card)`
-display="flex"; 
-flexDirection="column"; 
-justifyContent="center"; 
-alignItems="center";
-backgroudColor="black"
-`;
+
+
 const CustomCard = styled(Card)`
 padding: 40px;
 display: flex; 
@@ -80,7 +75,7 @@ const CustomCardComponent: React.FC<CustomCardProps> = ({ backgroundColor, svgSr
 }
 const Projects = () => {
     
-    return (<>
+    return (<div id="#projects" style={{ marginBottom: '30px'}}>
         <Container sx={{display:"flex", flexDirection:'column',padding: '70px 30px'}}>
         <Typography
                 gutterBottom
@@ -148,7 +143,7 @@ const Projects = () => {
                 </Grid>
             </Grid>
         </Container>
-    </>);
+    </div>);
 };
 
 export default Projects;

@@ -1,3 +1,4 @@
+import Projects from "./Projects";
 import CareerHighlights from "./CareerHighlights";
 import CaseStudies from "./CaseStudies";
 import ContactUs from "./ContactUs";
@@ -10,14 +11,12 @@ const Home = () => {
     return (<div id="main-container"> 
      <ResponsiveAppBar />
      <br />
-     <div id="controlCard-container" style={{display: "flex", justifyContent: "center" , backgroundColor:'black'}}>
+     <div id="controlCard-container" style={{display: "flex", justifyContent: "center" }}>
      <ControlCard />
     
      </div>
-    <CaseStudies />
+    <Projects />
     <CareerHighlights />
-    <br />
-    <TechnologiesCard />
    
     <ContactUs />
     </div>

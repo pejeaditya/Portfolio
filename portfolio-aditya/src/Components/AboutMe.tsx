@@ -24,8 +24,9 @@ const StyledPaper = styled(Paper)({
     borderRadius: '10px',
     transition: "transform 0.3s ease, box-shadow 0.3s ease",
     '&:hover': {
-      transform: "scale(1.25)",
+      transform: "scale(1.05)",
       boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
+      backgroundColor: '#2ba837',
     },
 });
 
@@ -36,7 +37,7 @@ export default function AboutMe() {
     const theme = useTheme();
     return (
         <>
-            <div id="aboutMe" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <Typography component="div"
                     variant="h4" gutterBottom sx={{
                         color: "white", width: "213px",
@@ -50,9 +51,10 @@ export default function AboutMe() {
                     Senior Cloud DevOps Engineer with over 5 years of experience. Specializes in designing and implementing scalable cloud infrastructure, automating deployment pipelines, and optimizing system performance. Skilled in various DevOps tools and technologies, knowledgeable in Cloud infrastructure, and well-versed in Continuous Integration/Deployment and Infrastructure Management. Passionate about sharing knowledge and helping others grow in the tech industry through mentoring and community engagement.
                 </Typography>
             </div>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
                 <Grid size={{ xs: 4 }} >
                     <StyledPaper sx={{
+                        backgroundColor:"#2ba837",
                         [theme.breakpoints.down('sm')]: {
                             height: "140px",
                             
@@ -62,7 +64,9 @@ export default function AboutMe() {
                         }
                     }}>
                         <div >
-                            <RibbonIcon style={{ [theme.breakpoints.down('sm')]: {
+                            <RibbonIcon style={{ 
+                                color:'white',[theme.breakpoints.down('sm')]: {
+                                
                                     fontSize: '1.00rem',
                                 },
                                 [theme.breakpoints.between('sm', 'md')]: {
@@ -72,6 +76,7 @@ export default function AboutMe() {
                                     fontSize: '1.0rem',
                                 }}} />
                             <Typography sx={{
+                                color:'white',
                                 margin: '10px',
                                 [theme.breakpoints.down('sm')]: {
                                     fontSize: '1.00rem',
@@ -88,6 +93,7 @@ export default function AboutMe() {
                 </Grid>
                 <Grid size={{ xs: 4 }}>
                     <StyledPaper sx={{
+                        backgroundColor:"#747474",
                         [theme.breakpoints.down('sm')]: {
                             height: "140px",
                         },
@@ -96,7 +102,9 @@ export default function AboutMe() {
                         }
                     }}>
                         <div >
-                            <PersonIcon style={{ [theme.breakpoints.down('sm')]: {
+                            <PersonIcon style={{
+                                color:'white',
+                                 [theme.breakpoints.down('sm')]: {
                                     fontSize: '1.00rem',
                                 },
                                 [theme.breakpoints.between('sm', 'md')]: {
@@ -106,6 +114,7 @@ export default function AboutMe() {
                                     fontSize: '1.0rem',
                                 }}} />
                             <Typography sx={{
+                                color:'white',
                                 margin: '10px',
                                 [theme.breakpoints.down('sm')]: {
                                     fontSize: '1.00rem',
@@ -122,6 +131,7 @@ export default function AboutMe() {
                 </Grid>
                 <Grid size={{ xs: 4 }}>
                     <StyledPaper sx={{
+                        backgroundColor:"#747474",
                         [theme.breakpoints.down('sm')]: {
                             height: "140px",
                         },
@@ -130,7 +140,7 @@ export default function AboutMe() {
                         }
                     }}>
                         <div>
-                            <MicIcon style={{ [theme.breakpoints.down('sm')]: {
+                            <MicIcon style={{color:'white', [theme.breakpoints.down('sm')]: {
                                     fontSize: '1.00rem',
                                 },
                                 [theme.breakpoints.between('sm', 'md')]: {
@@ -140,6 +150,7 @@ export default function AboutMe() {
                                     fontSize: '1.0rem',
                                 } }} />
                             <Typography sx={{
+                                color:'white',
                                 margin: '10px',
                                 [theme.breakpoints.down('sm')]: {
                                     fontSize: '1.00rem',

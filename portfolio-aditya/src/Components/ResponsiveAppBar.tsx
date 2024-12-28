@@ -12,13 +12,15 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { useLocation } from 'react-router-dom';
 
-const pages = [{ name: 'About Me', href: 'aboutMe' }, { name: 'Case Studies', href: 'caseStudies' }, { name: 'Career Highlights', href: 'careerHighlights' }, { name: 'Techologies', href: 'technologies' }, { name: 'Get in Touch', href: 'contactUs' }];
+const pages = [{ name: 'About Me', href: '#aboutMe' }, { name: 'Projects', href: '#projects' }, { name: 'Career Highlights', href: '#careerHighlights' }, { name: 'Get in Touch', href: '#contactUs' }];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+  const location = useLocation();
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -36,6 +38,7 @@ function ResponsiveAppBar() {
   };
   const scrollToSection = (id: string) => {
     console.log('strig:',id);
+    console.log(location);
     const element = document.getElementById(id);
     if (element) {
       console.log("in if");
@@ -44,15 +47,17 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed" sx={{ backgroundColor: 'black' }}>
-      <Container maxWidth="xl" sx={{ backgroundColor: 'black' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: "black"}}>
+      <Container maxWidth="xl" sx={{ backgroundColor: "rgba(0, 0, 0, 0.0)" }}>
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => { scrollToSection("#aboutMe"); }}
+            href='#aboutMe'
+
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -105,7 +110,8 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            onClick={() => { scrollToSection("#aboutMe"); }}
+            href='#aboutMe'
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -124,41 +130,14 @@ function ResponsiveAppBar() {
               <Button
                 key={page.name}
                 onClick={() => { handleCloseNavMenu(); scrollToSection(page.href); }}
+                href={page.href}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.name}
               </Button>
             ))}
           </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          
         </Toolbar>
       </Container>
     </AppBar>

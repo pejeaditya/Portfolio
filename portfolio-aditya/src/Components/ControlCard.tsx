@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useTheme } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -13,75 +13,89 @@ import Container from "@mui/material/Container";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import AboutMe from "./AboutMe";
-
+import videoBg from "../assets/greenColorPowder.mp4"
 export default function ControlCard() {
   const theme = useTheme();
 
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-    >
-      •
-    </Box>
-  );
+
+
+  const CustomButton = styled(Button)(({ theme }) => ({
+    position: 'relative',
+    overflow: 'hidden',
+    backgroundColor: 'transparent',
+    color: 'white',
+    width: '250px',
+    height: '80px',
+    fontSize: '16px',
+    fontFamily: 'sans-serif ',
+    border: 'solid green',
+    transition: 'color 0.5s ease', // Transition for text color
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      backgroundColor: '#2ba837', // The color you want to fill with
+      transform: 'scaleX(0)',
+      transformOrigin: 'left',
+      transition: 'transform 0.5s ease',
+      zIndex: -1,
+    },
+    '&:hover::before': {
+      transform: 'scaleX(1)',
+    },
+    '& .MuiButton-label': {
+      position: 'relative',
+      zIndex: 1,
+      color: 'white', // Ensure text color remains white
+    },
+  }));
+  
+
+// {&quot;background_background&quot;:&quot;video&quot;,&quot;background_video_link&quot;:&quot;https:\/\/www.spinat.fr\/wp-content\/uploads\/2020\/11\/green-color-powder-explosion-on-black-isolated-bac-A5B68UY.webmhd.mp4&quot;,&quot;background_video_start&quot;:0,&quot;background_play_on_mobile&quot;:&quot;yes&quot;}
 
   return (
-    <Container sx={{backgroundColor:"black", padding:'40px'}}>
-      <Card sx={{ display: "flex", maxHeight: "xl", backgroundColor:"black"}}>
-          <Container
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "40%",
-            }}
-          >
-            <CardContent
-              sx={{ flex: "1 0 auto", maxHeight: "200px", paddingTop: "40px" }}
-            >
+    <div id="aboutMe" style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+      <video
+        autoPlay
+        loop
+        muted
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -1,
+        }}
+      >
+        <source src={videoBg} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.0)", padding: '40px', position: 'relative', zIndex: 1, margin:' 10% '}}>
+        <div style={{ display: "flex",flexDirection:'column', maxHeight: "xl", backgroundColor: "rgba(0, 0, 0, 0.0)" , padding: '70px 30px' , }}>
+          
+            
               <Typography
                 gutterBottom
-                sx={{ color: "white", fontSize: 14 }}
+                sx={{ color: "white", fontSize: 78, fontWeight: 800 , fontFamily: '"Poppins", Sans-serif' }}
               >
-                Word of the Day
+                Aditya Peje
               </Typography>
-              <Typography variant="h5" component="div"  sx={{ color: "white"}}>
-                be{bull}nev{bull}o{bull}lent
-              </Typography>
-              <Typography sx={{ color: "white", mb: 1.5 }}>
-                adjective
-              </Typography>
-              <Typography variant="body2"  sx={{ color: "white", mb: 1.5 }}>
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
-              </Typography>
-            </CardContent>
+              <CustomButton variant="contained">
+        CONTACT ME
+      </CustomButton>
 
-            <CardActions>
-            <Button sx={{ 
-        backgroundColor: 'green', 
-        color: 'white', 
-        '&:hover': {
-          backgroundColor: 'darkgreen',
-        }
-      }} variant="contained">Get to know more</Button>
-            </CardActions>
-          </Container>
-        <CardMedia
-          component="img"
-          sx={{
-            width: "350px",
-            height: "350px",
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
-          image={require(`../ustils/tppp.jpeg`)}
-          alt="tpp"
-        />
-      </Card>
-     <AboutMe />
-    </Container>
-  );
+
+          
+          
+        </div>
+        <AboutMe />
+      </div>
+    </div>
+  );;
 }
 // ./utils/tppp.jpeg"

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, Container, Typography } from "@mui/material";
+import { Button, Card, CardContent, Container, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -8,7 +8,13 @@ import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
 import { inputLabelClasses } from "@mui/material/InputLabel";
 import emailjs, { sendForm } from '@emailjs/browser';
+import profilepic from '../assets/ProfilePic.jpeg'
+import Footer from "./Footer";
 
+
+const SvgImage = styled('img')`
+ width: 440px;
+`;
 
 export default function ContactUs() {
   const [value, setValue] = React.useState("");
@@ -20,6 +26,31 @@ export default function ContactUs() {
     from_email:'',
     message: '',
   });
+  const theme = useTheme();
+
+  const BackgroundImageContainer = styled(Container)(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      backgroundImage: `url(${profilepic})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  }));
+  const FormContainer = styled(Container)(({ theme }) => ({
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: to make the form readable over the background image
+      padding: '20px',
+      borderRadius: '10px',
+    },
+  }));
+  
 
   const filterPhoneNumber = (phoneNumber: string) => {
     // Remove the part from + to the next space
@@ -74,44 +105,60 @@ console.log("in submit", formData);
   font-family: AvenirNextLTPro-Regular;
   font-size: 1.0rem;
 `;
-  return (
-    <div id="contactUs" style={{ display:"flex", flexDirection:'column',alignItems:'center', backgroundColor:'black',width:'100%'}} >
-      <Card sx={{width:'100%', backgroundColor:'black',display:"flex", flexDirection:'column',alignItems:'center',  padding:"20px"}}>
-      <Typography
-        gutterBottom
-        component="div"
-        variant="h4"
-        color="white"
-        sx={{
-          width: "213px",
-          height: "40px",
-          textAlign: "center",
-          paddingTop: "50px",
-        }}
-      >
-        Get In Touch
-      </Typography>
-      <div>
-          <Typography
-            variant="body2"
-            component="div"
-            color="white"
-          >
-            Tilte of the  Get In Touch
-          </Typography>
-        </div>
-        <div>
-        <CardContent sx={{width:'90%', minWidth:'365px'}}>
 
-     
+
+
+  return (
+    <div id="#contactUs"  >
+      
+      <Container sx={{display:"flex", flexDirection:'column',padding: '70px 30px', alignItems:"center"}}>
+      <Typography
+                gutterBottom
+                sx={{fontSize: 48, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif'}}
+              >
+                Get In Touch 
+              </Typography>
+
+              <Typography
+                gutterBottom
+                sx={{fontSize: 17, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif' ,lineHeight: '17px', color:'#2BA837'}}
+              >
+                Have a project in mind? Let's work together to create something amazing.
+              </Typography>
+      
+        <Grid container spacing={20} sx={{ display: 'flex', alignItems: "center", justifyContent: 'center', margin:'3% 0%'}}>
+        <Grid size={{md:6, xs:12}} sx={{display: { xs: 'none', md: 'flex' }, justifyContent:"center", alignItems:'center'}}>
+        <SvgImage src={profilepic} alt="SVG Icon" />
+          </Grid>
+        
+          <Grid size={{md:6}} sx={{
+          [theme.breakpoints.down('sm')]: {
+            backgroundImage: `url(${profilepic})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        }}>
+        
+        <Box sx={{[theme.breakpoints.down('sm')]: {
+      backgroundColor: 'rgba(255, 255, 255, 0.4)', // Optional: to make the form readable over the background image
+      padding: '20px',
+      borderRadius: '10px',
+    },}}>
         <form onSubmit={handleSubmit}>
           <Grid  spacing={1}>
-            <Grid size={{xs:12 , sm:6}}>
+            <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
             marginTop: "10px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
           slotProps={{
             input: {
@@ -143,12 +190,15 @@ console.log("in submit", formData);
           required
         />
         </Grid>
-        <Grid size={{xs:12 , sm:6}}>
+        <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
             marginTop: "50px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
           slotProps={{
             input: {
@@ -178,12 +228,15 @@ console.log("in submit", formData);
           onChange={handleChange}
         />
         </Grid>
-        <Grid size={{xs:12 , sm:6}}>
+        <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
             marginTop: "50px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
 
           slotProps={{
@@ -214,13 +267,36 @@ console.log("in submit", formData);
           onChange={handleChange}
         />
         </Grid>
-        <Grid size={{xs:12 , sm:6}}>
+        <Grid >
         <MuiTelInput
-          style={{
+          sx={{
             backgroundColor: "white",
             marginTop: "50px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
+
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          defaultCountry="IN"
           value={value}
           fullWidth
           onChange={handlePhoneChange}
@@ -235,6 +311,9 @@ console.log("in submit", formData);
             backgroundColor: "white",
             marginTop: "40px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
           slotProps={{
             input: {
@@ -282,9 +361,20 @@ console.log("in submit", formData);
         </Button>
         </Grid>
         </form>
-        </CardContent>
-      </div>
-      </Card>
+        </Box>
+        
+        
+      </Grid>
+      </Grid>
+      </Container>
+      <Footer />
+      
     </div>
   );
 }
+
+
+// display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     [theme.breakpoints.down('sm')]: {
