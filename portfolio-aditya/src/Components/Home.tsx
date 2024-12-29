@@ -10,11 +10,7 @@ import TechnologiesCard from "./TechnologiesCard";
 const Home = () => {
     return (<div id="main-container"> 
      <ResponsiveAppBar />
-     <br />
-     <div id="controlCard-container" style={{display: "flex", justifyContent: "center" }}>
      <ControlCard />
-    
-     </div>
     <Projects />
     <CareerHighlights />
    

@@ -22,7 +22,7 @@ const Footer = () => {
         <Box>
           <IconButton
             component="a"
-            href="https://github.com/your-github-profile"
+            href="https://github.com/pejeaditya"
             target="_blank"
             rel="noopener noreferrer"
             sx={{ color: 'white' }}
@@ -31,7 +31,7 @@ const Footer = () => {
           </IconButton>
           <IconButton
             component="a"
-            href="https://www.linkedin.com/in/your-linkedin-profile"
+            href="https://www.linkedin.com/in/aditya-peje-8729b3188?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
             sx={{ color: 'white' }}

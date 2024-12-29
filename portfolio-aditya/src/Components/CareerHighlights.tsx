@@ -13,9 +13,13 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
+
 import { useState } from "react";
 import { transform } from "typescript";
 import Grid from '@mui/material/Grid2';
+import SchoolIcon from '@mui/icons-material/School';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import ScienceIcon from '@mui/icons-material/Science';
 
 export default function CareerHighlights() {
   const [educationDetails, setEducationDetails] = useState(false);
@@ -54,17 +58,42 @@ export default function CareerHighlights() {
 
   const CustomTypography = styled(Typography)(({ theme }) => ({
     color: 'white',
+    fontFamily: '"Poppins", Sans-serif',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '0.8rem',
+      fontSize: '0.9rem',
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      fontSize: '0.8rem',
+      fontSize: '1.2rem',
       
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '0.8rem',
+      fontSize: '1.25rem',
+    },
+    transition: 'transform 0.5s ease', // Smooth transition for transform
+    '&:hover': {
+      transform: 'translateX(20px)'}
+  }));
+  const CustomButtonTypography = styled(Typography)(({ theme }) => ({
+    color: 'white',
+    fontFamily: '"Poppins", Sans-serif',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.9rem',
+      flexDirection: 'column',
+      alignItems: 'center',
+
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      fontSize: '1.2rem',
+      
+    },
+    [theme.breakpoints.up('md')]: {
+      fontSize: '1.25rem',
     },
   }));
+
 
   const handleButton = (buttonKey: string) => {
     console.log("i button", buttonKey)
@@ -103,7 +132,6 @@ export default function CareerHighlights() {
     },
 });
 
-
   interface CustomCardProps {
     title: string;
     subtitle: string;
@@ -113,9 +141,9 @@ export default function CareerHighlights() {
   }
   const CustomCardComponent: React.FC<CustomCardProps> = ({ title, subtitle, description, details, buttonText }) => {
     return (
-      <div style={{ margin: "20px" }}>
+      <div style={{ margin: "20px 5px" }}>
         <CustomCard variant="outlined">
-          <CardContent>
+          <CardContent sx={{margin:'10px'}}>
             <Typography variant="h5" component="div" color="white"> 
               {title}
             </Typography>
@@ -125,15 +153,17 @@ export default function CareerHighlights() {
             <Typography sx={{ color: "white", mb: 1.5 }}>
               {description}
             </Typography>
-            <CustomTypography variant="body2" color="white">
-            <ul style={{padding: 16}}> 
+            
+            <ul style={{padding: 16,  color:'white'}}> 
               {details.map((detail, index) => (
                 <li key={index} style={{ padding: 0, }}>
+                  <CustomTypography variant="body2" color="white" >
                   <ListItemText primary={detail} sx={{ padding: 0 }} />
+                  </CustomTypography>
                 </li>
               ))}
             </ul>
-            </CustomTypography>
+            
           </CardContent>
         </CustomCard>
       </div>
@@ -166,18 +196,14 @@ export default function CareerHighlights() {
           sx={{
             backgroundColor: buttonColor.careerDetails,
             
-                        [theme.breakpoints.down('sm')]: {
-                            height: "140px",
-                            
-                        },
-                        [theme.breakpoints.between('sm', 'md')]: {
-                            height: "140px",
-                        }
             
           }}
           onClick={() => { handleButton('careerDetails'); setEducationDetails(false); }}
         >
-          <CustomTypography variant="body1">Career Details</CustomTypography>
+           <CustomButtonTypography>
+            <WorkHistoryIcon />  
+            <CustomButtonTypography variant="body1">Carrer Details</CustomButtonTypography>
+            </CustomButtonTypography>
         </StyledPaper>
         </Grid>
         <Grid size={{ xs: 4 }} >
@@ -186,18 +212,16 @@ export default function CareerHighlights() {
           sx={{
             backgroundColor: buttonColor.educationDetails,
             
-                        [theme.breakpoints.down('sm')]: {
-                            height: "140px",
-                            
-                        },
-                        [theme.breakpoints.between('sm', 'md')]: {
-                            height: "140px",
-                        }
             
           }}
           onClick={() => { handleButton('educationDetails'); setEducationDetails(true); }}
         >
-          <CustomTypography variant="body1">Educational Details</CustomTypography>
+          
+            
+            <CustomButtonTypography>
+            <SchoolIcon />  
+            <CustomButtonTypography variant="body1">Educational Details</CustomButtonTypography>
+            </CustomButtonTypography>
         </StyledPaper>
         </Grid>
         <Grid size={{ xs: 4 }} >
@@ -205,18 +229,14 @@ export default function CareerHighlights() {
           sx={{
             backgroundColor: buttonColor.researchDetails,
             
-                        [theme.breakpoints.down('sm')]: {
-                            height: "140px",
-                            
-                        },
-                        [theme.breakpoints.between('sm', 'md')]: {
-                            height: "140px",
-                        }
             
           }}
           onClick={() => { handleButton('researchDetails'); setEducationDetails(true); }}
         >
-          <CustomTypography variant="body1">Research Details</CustomTypography>
+          <CustomButtonTypography>
+            <ScienceIcon />  
+            <CustomButtonTypography variant="body1">Research Details</CustomButtonTypography>
+            </CustomButtonTypography>
         </StyledPaper>
         </Grid>
         </Grid>

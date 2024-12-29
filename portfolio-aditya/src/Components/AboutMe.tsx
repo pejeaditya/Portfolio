@@ -47,11 +47,11 @@ export default function AboutMe() {
                     }}>
                     About Me
                 </Typography >
-                <Typography variant="body1" gutterBottom sx={{ color: "white", padding: '10px 25px 10px 25px' }}>
+                <Typography variant="body1" gutterBottom sx={{ color: "white", padding: '1px' }}>
                     Senior Cloud DevOps Engineer with over 5 years of experience. Specializes in designing and implementing scalable cloud infrastructure, automating deployment pipelines, and optimizing system performance. Skilled in various DevOps tools and technologies, knowledgeable in Cloud infrastructure, and well-versed in Continuous Integration/Deployment and Infrastructure Management. Passionate about sharing knowledge and helping others grow in the tech industry through mentoring and community engagement.
                 </Typography>
             </div>
-            <Grid container spacing={4}>
+            <Grid container spacing={2}>
                 <Grid size={{ xs: 4 }} >
                     <StyledPaper sx={{
                         backgroundColor:"#2ba837",
