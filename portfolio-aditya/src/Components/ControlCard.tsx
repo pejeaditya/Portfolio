@@ -57,7 +57,7 @@ export default function ControlCard() {
 // {&quot;background_background&quot;:&quot;video&quot;,&quot;background_video_link&quot;:&quot;https:\/\/www.spinat.fr\/wp-content\/uploads\/2020\/11\/green-color-powder-explosion-on-black-isolated-bac-A5B68UY.webmhd.mp4&quot;,&quot;background_video_start&quot;:0,&quot;background_play_on_mobile&quot;:&quot;yes&quot;}
 
   return (
-    <div id="aboutMe" style={{ position: 'relative', overflow: 'hidden', height: '100vh' }}>
+    <div id="aboutMe" style={{ position: 'relative', overflow: 'hidden', height: '100%' }}>
       <video
         autoPlay
         loop
@@ -75,23 +75,25 @@ export default function ControlCard() {
         <source src={videoBg} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.0)", padding: '40px', position: 'relative', zIndex: 1, margin:' 10% '}}>
-        <div style={{ display: "flex",flexDirection:'column', maxHeight: "xl", backgroundColor: "rgba(0, 0, 0, 0.0)" , padding: '70px 30px' , }}>
+      <div style={{ backgroundColor: "rgba(0, 0, 0, 0.0)", padding: '10px', position: 'relative', zIndex: 1, margin:'5%',marginTop:'15%'}}>
+        <div style={{ display: "flex",flexDirection:'column', maxHeight: "xl", backgroundColor: "rgba(0, 0, 0, 0.0)" , padding: '70px 0px',[theme.breakpoints.down('md')]: {
+                    paddingTop:'90px'
+                  }}}>
           
             
               <Typography
                 gutterBottom
-                sx={{ color: "white", fontSize: 78, fontWeight: 800 , fontFamily: '"Poppins", Sans-serif' }}
+                sx={{ color: "white", fontSize: 78, fontWeight: 800 , fontFamily: '"Poppins", Sans-serif',
+                  [theme.breakpoints.down('sm')]: {
+                    fontSize: 45,
+                  }
+                 }}
               >
                 Aditya Peje
               </Typography>
               <CustomButton variant="contained">
         CONTACT ME
       </CustomButton>
-
-
-          
-          
         </div>
         <AboutMe />
       </div>
