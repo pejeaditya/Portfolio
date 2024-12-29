@@ -57,7 +57,7 @@ export default function ControlCard() {
 // {&quot;background_background&quot;:&quot;video&quot;,&quot;background_video_link&quot;:&quot;https:\/\/www.spinat.fr\/wp-content\/uploads\/2020\/11\/green-color-powder-explosion-on-black-isolated-bac-A5B68UY.webmhd.mp4&quot;,&quot;background_video_start&quot;:0,&quot;background_play_on_mobile&quot;:&quot;yes&quot;}
 
   return (
-    <div id="aboutMe" style={{ position: 'relative', overflow: 'hidden', height: '100%' }}>
+    <div id="#aboutMe" style={{ position: 'relative', overflow: 'hidden', height: '100%' }}>
       <video
         autoPlay
         loop
