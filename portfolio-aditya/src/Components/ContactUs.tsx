@@ -1,15 +1,56 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Card, CardContent, Container, Typography, useTheme } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
-
+import React, { useRef, useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
+import { inputLabelClasses } from "@mui/material/InputLabel";
+import emailjs, { sendForm } from '@emailjs/browser';
+import profilepic from '../assets/ProfilePic.jpeg'
+import Footer from "./Footer";
+
+
+const SvgImage = styled('img')`
+ width: 440px;
+`;
 
 export default function ContactUs() {
   const [value, setValue] = React.useState("");
   const [error, setError] = useState(true);
+  const [formData, setFormData] = useState({
+    from_first_name: '',
+    from_last_name: '',
+    phone_number: '',
+    from_email:'',
+    message: '',
+  });
+  const theme = useTheme();
+
+  const BackgroundImageContainer = styled(Container)(({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      backgroundImage: `url(${profilepic})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      height: '100vh',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  }));
+  const FormContainer = styled(Container)(({ theme }) => ({
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: to make the form readable over the background image
+      padding: '20px',
+      borderRadius: '10px',
+    },
+  }));
+  
 
   const filterPhoneNumber = (phoneNumber: string) => {
     // Remove the part from + to the next space
@@ -17,8 +58,12 @@ export default function ContactUs() {
     const filtered = filteredPhoneNumber.replace(/[^\d]/g, "");
     return filtered;
   };
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const handleChange = (newValue: any) => {
+  const handlePhoneChange = (newValue: any) => {
     matchIsValidTel(newValue, {
       onlyCountries: ["IN"],
       excludedCountries: [],
@@ -32,97 +77,304 @@ export default function ContactUs() {
     if (phoneValue.length === 10) {
       setError(false);
     }
+    setFormData({ ...formData, phone_number: phoneValue });
     console.log(phoneValue);
     console.log(error);
   };
+
+  
+
+  const handleSubmit = (e:  any) => {
+    e.preventDefault();
+console.log("in submit", formData);
+    emailjs.send('service_0q06xmr', 'template_of6jpq9', formData, 'agfr9XFUGhyjUYlwj')
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        alert('Email sent successfully!');
+      })
+      .catch((error) => {
+        console.error('Error sending email:', error);
+        alert('Failed to send email.');
+      });
+  };
+
+
   const InputValidationError = styled.span`
   margin-top: 10px;
   color: #c21f39 !important;
   font-family: AvenirNextLTPro-Regular;
-  font-size: 14px;
+  font-size: 1.0rem;
 `;
 
-  return (
-    <div style={{backgroundColor: "black",display:"flex",flexDirection:'column', alignItems:'center'}}>
-      <Typography
-        gutterBottom
-        component="div"
-        variant="h4"
-        sx={{
-          width: "213px",
-          height: "40px",
-          color: "white",
-          textAlign: "center",
-          paddingTop: "50px",
-        }}
-      >
-        Get In Touch
-      </Typography>
-      <div>
-          <Typography
-            variant="body2"
-            component="div"
-            sx={{ color: "white" }}
-          >
-            Tilte of the  Get In Touch
-          </Typography>
-        </div>
 
-      <Container
-        sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      >
+
+  return (
+    <div id="#contactUs"  >
+      
+      <Container sx={{display:"flex", flexDirection:'column',padding: '70px 30px', alignItems:"center"}}>
+      <Typography
+                gutterBottom
+                sx={{fontSize: 48, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif'}}
+              >
+                Get In Touch 
+              </Typography>
+
+              <Typography
+                gutterBottom
+                sx={{fontSize: 17, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif' ,lineHeight: '17px', color:'#2BA837'}}
+              >
+                Have a project in mind? Let's work together to create something amazing.
+              </Typography>
+      
+        <Grid container spacing={20} sx={{ display: 'flex', alignItems: "center", justifyContent: 'center', margin:'3% 0%'}}>
+        <Grid size={{md:6, xs:12}} sx={{display: { xs: 'none', md: 'flex' }, justifyContent:"center", alignItems:'center'}}>
+        <SvgImage src={profilepic} alt="SVG Icon" />
+          </Grid>
+        
+          <Grid size={{md:6}} sx={{
+          [theme.breakpoints.down('sm')]: {
+            backgroundImage: `url(${profilepic})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          },
+        }}>
+        
+        <Box sx={{[theme.breakpoints.down('sm')]: {
+      backgroundColor: 'rgba(255, 255, 255, 0.4)', // Optional: to make the form readable over the background image
+      padding: '20px',
+      borderRadius: '10px',
+    },}}>
+        <form onSubmit={handleSubmit}>
+          <Grid  spacing={1}>
+            <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
-            width: "50%",
-            marginTop: "50px",
+            marginTop: "10px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
-          typeof="number"
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          name='from_first_name'
+          value={formData.from_first_name}
+          onChange={handleChange}
+
+         variant="outlined"
+          fullWidth
           id="demo-helper-text-aligned-no-helper"
-          label="Name"
+          label="First Name"
+          placeholder="Enter first name"
+          required
         />
-        <>
-        <MuiTelInput
-          style={{
+        </Grid>
+        <Grid >
+        <TextField
+          sx={{
             backgroundColor: "white",
-            width: "50%",
             marginTop: "50px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
-          value={value}
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          fullWidth
+          id="demo-helper-text-aligned-no-helper"
+          label="Last Name"
+          placeholder="Enter last name"
+          required
+          name='from_last_name'
+          value={formData.from_last_name}
           onChange={handleChange}
         />
-        {error && <InputValidationError >**Invalid Number</InputValidationError>}
-        </>
-        <br />
+        </Grid>
+        <Grid >
         <TextField
           sx={{
             backgroundColor: "white",
-            width: "50%",
             marginTop: "50px",
             borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
           }}
+
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          type="email"
+          label='Email'
+          fullWidth
+          id="demo-helper-text-aligned-no-helper"
+          required
+          name='from_email'
+          value={formData.from_email}
+          onChange={handleChange}
+        />
+        </Grid>
+        <Grid >
+        <MuiTelInput
+          sx={{
+            backgroundColor: "white",
+            marginTop: "50px",
+            borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
+          }}
+
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          defaultCountry="IN"
+          value={value}
+          fullWidth
+          onChange={handlePhoneChange}
+          placeholder="Contact No.*"
+        />
+        {error && <InputValidationError >**Invalid Number</InputValidationError>}
+        </Grid>
+        <br />
+        <Grid >
+        <TextField
+          sx={{
+            backgroundColor: "white",
+            marginTop: "40px",
+            borderRadius: "10px",
+            [theme.breakpoints.down('sm')]: {
+              backgroundColor: 'rgba(255, 255, 255, 0.4)', 
+            }
+          }}
+          slotProps={{
+            input: {
+              sx: {
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'green',
+                },
+              },
+            },
+            inputLabel: {
+              sx: {
+                '&.Mui-focused': {
+                  color: 'green',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem'
+                },
+              },
+            },
+          }}
+          multiline rows={5}
           id="demo-helper-text-aligned-no-helper"
           label="Message"
+          fullWidth
+          required
+          name='message'
+          value={formData.message}
+          onChange={handleChange}
         />
+        </Grid>
         <br />
 
         <Button
           sx={{
-            margin: "25px",
             backgroundColor: "green", 
-            width: "30%",
             color: "white", 
             "&:hover": {
               backgroundColor: "darkgreen", 
             },
           }}
+          type="submit"
           variant="contained"
+          fullWidth
         >
           Submit
         </Button>
+        </Grid>
+        </form>
+        </Box>
+        
+        
+      </Grid>
+      </Grid>
       </Container>
+      <Footer />
+      
     </div>
   );
 }
+
+
+// display: 'flex',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     [theme.breakpoints.down('sm')]: {

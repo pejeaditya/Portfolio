@@ -13,6 +13,7 @@ import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
+import Grid from '@mui/material/Grid2'; // Importing Grid2 component
 
 export default function CaseStudies() {
   const [open, setOpen] = useState(false);
@@ -34,7 +35,8 @@ export default function CaseStudies() {
   }));
 
   return (
-    <Container>
+    <div id="caseStudies">
+    <Container >
       <div
         style={{
           display: "flex",
@@ -63,17 +65,22 @@ export default function CaseStudies() {
           </Typography>
         </div>
       </div>
+      
       <Card
         id="fintech"
-        sx={{ display: "flex", flexDirection: "column", boxShadow: "none" }}
+        sx={{boxShadow: "none" }}
+
       >
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <Grid container spacing={2}>
+        <Grid size={{xs:6, md:4}} sx={{display:'flex',alignItems:"center", justifyContent:'center'}}>
           <CardMedia
             component="img"
             image={require(`../ustils/Maskgroup.png`)}
             alt="green iguana"
-            sx={{ width: "30%", height: "30%", margin: "25px" }}
+            
           />
+          </Grid>
+          <Grid size={{xs:6, md: 8}} sx={{display:'flex',alignItems:"center", justifyContent:'center'}}>
 
           <CardContent sx={{ margin: "25px" }}>
             <Typography
@@ -94,7 +101,8 @@ export default function CaseStudies() {
               6,000 species, ranging across all continents except Antarctica
             </Typography>
           </CardContent>
-        </div>
+          </Grid>
+        </Grid>
         <CardActions sx={{ margin: "25px" }}>
           <Button
             sx={{
@@ -155,9 +163,10 @@ export default function CaseStudies() {
 
       <Card
         id="edtech"
-        sx={{ display: "flex", flexDirection: "column", boxShadow: "none" }}
+        sx={{boxShadow: "none" }}
       >
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        <Grid container spacing={2}>
+        <Grid size={{xs:6, md:8}} sx={{display:'flex',alignItems:"center", justifyContent:'center'}}>
           <CardContent sx={{ margin: "25px" }}>
             <Typography
               gutterBottom
@@ -179,13 +188,15 @@ export default function CaseStudies() {
               eiusmod tempor incididunt ut labore et dolore magna.
             </Typography>
           </CardContent>
+          </Grid>
+          <Grid size={{xs:6, md:4}} sx={{display:'flex',alignItems:"center", justifyContent:'center'}}>
           <CardMedia
             component="img"
             image={require(`../ustils/image1.png`)}
             alt="green iguana"
-            sx={{ width: "30%", height: "30%", margin: "25px" }}
           />
-        </div>
+          </Grid>
+        </Grid>
         <CardActions sx={{ margin: "25px" }}>
           <Button
             sx={{
@@ -244,5 +255,6 @@ export default function CaseStudies() {
         </CardActions>
       </Card>
     </Container>
+    </div>
   );
 }
