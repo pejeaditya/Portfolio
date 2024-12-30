@@ -47,29 +47,45 @@ interface CustomCardProps {
     primaryText: string;
     details: string;
     backgroundColor: string;
+    technologiesUsed: string;
     
   } 
 
-const CustomCardComponent: React.FC<CustomCardProps> = ({ backgroundColor, svgSrc , primaryText , details}) => {
+const CustomCardComponent: React.FC<CustomCardProps> = ({ backgroundColor, svgSrc , primaryText , details, technologiesUsed}) => {
     return (
-        <CustomCard sx={{backgroundColor:backgroundColor,boxShadow: 'none', borderRadius: '0px'}}>
+        <CustomCard sx={{backgroundColor:backgroundColor,boxShadow: 'none', borderRadius: '0px', minHeight:'470px'}}>
                         
          <SvgImage src={svgSrc} alt="SVG Icon" />
         <Typography  component="div" sx={{ fontFamily: '"Poppins", Sans-serif', color: '#101010',fontSize: '20px',
     fontWeight: '700',
     lineHeight: '1.4em.',transition: 'transform 0.5s ease', // Smooth transition for transform
     '&:hover': {
-      transform: 'translateY(-50px)', // Move upwards by 50px on hover
-      
+      transform: 'translateY(-50px)',
+       // Move upwards by 50px on hover
     },margin: '20px 0px 20px 0px' }}>
           <h3>{primaryText}</h3>
         </Typography>
-        <Typography variant="body2" color="text.secondary"  sx={{ fontFamily: '"Poppins", Sans-serif',transition: 'transform 0.5s ease', // Smooth transition for transform
+        <ul>
+            <li>
+            <Typography variant="body2" color="text.secondary"  sx={{ fontFamily: '"Poppins", Sans-serif',transition: 'transform 0.5s ease', // Smooth transition for transform
           '&:hover': {
             transform: 'translateY(-50px)', // Move upwards by 50px on hover
-          },margin: '20px 0px 20px 0px' }}>
+          }}}>
           {details}
-        </Typography>
+          </Typography>
+          </li>
+          <li>
+          <Typography variant="body2" color="text.secondary"  sx={{ fontFamily: '"Poppins", Sans-serif',transition: 'transform 0.5s ease', // Smooth transition for transform
+          '&:hover': {
+            transform: 'translateY(-50px)', // Move upwards by 50px on hover
+          }}}>
+          {technologiesUsed}
+          </Typography>
+          </li>        
+        </ul>
+        
+          
+       
     </CustomCard>
     );
 }
@@ -88,23 +104,25 @@ const Projects = () => {
                 gutterBottom
                 sx={{fontSize: 17, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif' ,lineHeight: '17px', color:'#2BA837'}}
               >
-                WEBSITE CREATION AND WEBMARKETING 
+                WEBSITE/APPLICATION CREATION AND SUPPORT 
               </Typography>
             <Grid container spacing={0} sx={{ display: 'flex', alignItems: "center", justifyContent: 'center', margin:'3% 0%'}}>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                 <CustomCardComponent
                 backgroundColor="rgba(0, 0, 0, 0.1)"
         svgSrc={image} // Replace with the actual path to your SVG image
-        primaryText="Création site internet"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Railway Reservation System"
+        details="In this application multiple users are able to signup , login, book tickets for a train depending on the route. Seat allocation is dynamic and cancelling ticket is  easy."
+        technologiesUsed="Technologies used: Java, Spring-Boot, Spring Security, React JS ,My-SQL."
       />
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                 <CustomCardComponent
                 backgroundColor="white"
         svgSrc={cloud} // Replace with the actual path to your SVG image
-        primaryText="Primary Text"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Migration of services from Ec2 to Kubernetes"
+        details="Contribution in the migration of microservices architecture from legendary Ec2 to Kubernetes leading to  Cost Optimization."
+        technologiesUsed="Technologies & tools used: Docker, Kubernetes, Argo CD, Jenkins."
       />
 
                 </Grid>
@@ -112,33 +130,39 @@ const Projects = () => {
                 <CustomCardComponent
                 backgroundColor="rgba(0, 0, 0, 0.1)"
         svgSrc={report} // Replace with the actual path to your SVG image
-        primaryText="Primary Text"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Toolkit- A powershell Application"
+        details="The Toolkit is a standalone application designed to automate certain activities performed by technicians or service representatives on end-user remote desktops."
+        technologiesUsed="Technologies used: Powershell, Apple Scripts, Python."
       />
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                 <CustomCardComponent
                 backgroundColor="white"
         svgSrc={rocket} // Replace with the actual path to your SVG image
-        primaryText="Primary Text"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Zendesk Integrated Application "
+        details="The app is integrated with Zendesk using ZAFClient. Agents mainly use the app to perform customer related actions like create customers, view customer details, view customer's subscriptions, add subscriptions etc."
+        technologiesUsed="Technologies used: React Js,Java, Spring Boot, Spring Security, PostgreSQL"
       />
+
+
 
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                 <CustomCardComponent
                 backgroundColor="rgba(0, 0, 0, 0.1)"
         svgSrc={send} // Replace with the actual path to your SVG image
-        primaryText="Primary Text"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Batch File Processing"
+        details="BFP is used to get updated data from customers, the data is received daily in form of csv files, this csv files are verified and processsed hereafter data of the customer is feed in PostgreSQL."
+        technologiesUsed="Technologies used: Linux, Shell, Python. Tools used : Docker, Kubernetes Jobs, Argo CD, Jenkins"
       />
                 </Grid>
                 <Grid size={{ xs: 12, md: 6, lg: 4 }}>
                 <CustomCardComponent
                 backgroundColor="white"
         svgSrc={uxdesign} // Replace with the actual path to your SVG image
-        primaryText="Primary Text"
-        details="This is the details about the primary text. It provides more information and context."
+        primaryText="Portfolio"
+        details="A necessary project for gaining and sharing knowledge, thereby helping others to grow in the tech industry through community engagement."
+        technologiesUsed="Technologies used: React Js. , Material UI, Used Email.js for sending emails."
       />
                 </Grid>
             </Grid>

@@ -5,12 +5,6 @@ import RibbonIcon from '@mui/icons-material/EmojiEvents';
 import PersonIcon from '@mui/icons-material/Person';
 import MicIcon from '@mui/icons-material/Mic';
 
-const RootBox = styled(Box)({
-    padding: '20px',
-    backgroundColor: '#f0f4ff',
-    borderRadius: '10px',
-});
-
 const StyledPaper = styled(Paper)({
     display: 'flex',
     alignItems: 'center',
@@ -47,8 +41,8 @@ export default function AboutMe() {
                     }}>
                     About Me
                 </Typography >
-                <Typography variant="body1" gutterBottom sx={{ color: "white", padding: '1px' }}>
-                    Senior Cloud DevOps Engineer with over 5 years of experience. Specializes in designing and implementing scalable cloud infrastructure, automating deployment pipelines, and optimizing system performance. Skilled in various DevOps tools and technologies, knowledgeable in Cloud infrastructure, and well-versed in Continuous Integration/Deployment and Infrastructure Management. Passionate about sharing knowledge and helping others grow in the tech industry through mentoring and community engagement.
+                <Typography variant="body1" gutterBottom fontSize='18px' sx={{ color: "white", padding: '2px 5%', textAlign:'center'}}>
+                   As a versatile Software Development Engineer, I have successfully delivered impactful projects across diverse platforms, including Windows and Mac. My expertise spans Powershell applications development, web development, service optimization, and seamless integrations, driving enhanced performance and robust solutions. With a proven track record in backend design, frontend development, and cloud migration, I thrive on solving complex problems and fostering strong team collaborations.
                 </Typography>
             </div>
             <Grid container spacing={2}>

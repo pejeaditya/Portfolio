@@ -1,13 +1,11 @@
-import { Alert, Button, Card, CardContent, Container, Typography, useTheme } from "@mui/material";
+import { Alert, Button, Container, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
-import { alignProperty } from "@mui/material/styles/cssUtils";
 import styled from "styled-components";
-import { inputLabelClasses } from "@mui/material/InputLabel";
-import emailjs, { sendForm } from '@emailjs/browser';
+import emailjs from '@emailjs/browser';
 import profilepic from '../assets/ProfilePic.jpeg'
 import Footer from "./Footer";
 
@@ -30,30 +28,6 @@ export default function ContactUs() {
   });
   const [isSuccess, setIsSuccess] = useState(false);
   const theme = useTheme();
-
-  const BackgroundImageContainer = styled(Container)(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
-      backgroundImage: `url(${profilepic})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '100vh',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  }));
-  const FormContainer = styled(Container)(({ theme }) => ({
-    [theme.breakpoints.down('sm')]: {
-      backgroundColor: 'rgba(255, 255, 255, 0.8)', // Optional: to make the form readable over the background image
-      padding: '20px',
-      borderRadius: '10px',
-    },
-  }));
-
 
   const filterPhoneNumber = (phoneNumber: string) => {
     // Remove the part from + to the next space

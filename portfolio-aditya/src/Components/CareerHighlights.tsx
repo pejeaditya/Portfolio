@@ -1,21 +1,14 @@
 import {
-  Box,
-  Button,
   Card,
-  CardActions,
   CardContent,
   Container,
-  List,
-  ListItem,
   ListItemText,
   Paper,
   styled,
   Typography,
-  useTheme,
 } from "@mui/material";
 
 import { useState } from "react";
-import { transform } from "typescript";
 import Grid from '@mui/material/Grid2';
 import SchoolIcon from '@mui/icons-material/School';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
@@ -28,7 +21,6 @@ export default function CareerHighlights() {
     educationDetails: false,
     researchDetails: false
   })
-  const theme = useTheme();
   const [buttonColor, setButtonColor] = useState({
     careerDetails: '#2ba837',
     educationDetails: '#5A5A5A',
@@ -185,7 +177,7 @@ export default function CareerHighlights() {
               <Typography
                 sx={{fontSize: 17, fontWeight: 700 , fontFamily: '"Poppins", Sans-serif' ,lineHeight: '17px', color:'#2BA837', marginBottom:'30px'}}
               >
-                A proven track record of delivering scalable cloud solutions and continuous learning in modern technologies
+                A proven track record of delivering scalable web applications in modern technologies.
               </Typography>
    
 
@@ -244,30 +236,27 @@ export default function CareerHighlights() {
       {(!careerHighlights.careerDetails && !careerHighlights.researchDetails) ? (
         <div>
           <Container>
-            <CustomCardComponent
-              title="Education Details"
-              subtitle="be{bull}nev{bull}o{bull}lent"
-              description="adjective"
+          <CustomCardComponent
+              title="Diploma in Advance Computing(CDAC)"
+              subtitle="2021-22"
+              description="SunBeam Infotech,Pune"
               details={[
-                "- Another first bullet point.",
-                "- Another second bullet point.",
-                "- Another third bullet point.",
-                "- Another fourth bullet point."
-              ]}
-              buttonText="Learn More"
-            />
-
-            <CustomCardComponent
-              title="Another Title"
-              subtitle="Another Subtitle"
-              description="Another Description"
-              details={[
-                "Another first bullet point.",
-                "Another second bullet point.",
-                "Another third bullet point.",
-                "Another fourth bullet point."
+                "Percentage: 79%",
+                "Focused on programming and software development.",
+                "Specialized in Software Engineering and Web Development."
               ]}
               buttonText="Read More"
+            />
+            <CustomCardComponent
+              title="Bachelor's in Mechanical Engineering"
+              subtitle="2015-2019"
+              description="K.G.C.E, Karjat (Mumbai University)"
+              details={[
+                "Overall CGPA 7.33",
+                "Gained Experience in probem solving skils and Management.",
+                "Got a chance to serve as University Representive of Mumbai University for various national and innternational events."
+              ]}
+              buttonText="Learn More"
             />
           </Container>
         </div>
@@ -275,28 +264,24 @@ export default function CareerHighlights() {
         <div>
           <Container>
             <CustomCardComponent
-              title="Research Details"
-              subtitle="Research Detail 1"
-              description="Another Description"
-              details={[
-                "Another first bullet point.",
-                "Another second bullet point.",
-                "Another third bullet point.",
-                "Another fourth bullet point."
-              ]}
+              title="Technical Paper"
+              subtitle="2020-21"
+              description="Paper Title: Design and Analysis of Mechanical Based Can Crusher"
+              details={["This paper was published in International Journal of Scientific Research in Engineering and Management (ISSN:2582-3931)."]}
               buttonText="Read More"
             />
-
             <CustomCardComponent
-              title="Research Details"
-              subtitle="Research Detail 2"
-              description="Another Description"
-              details={[
-                "Another first bullet point.",
-                "Another second bullet point.",
-                "Another third bullet point.",
-                "Another fourth bullet point."
-              ]}
+              title="Technical Paper"
+              subtitle="2020-21"
+              description="Paper Title:  Gravity-A Non-Conventional Source for Electric Generation"
+              details={["This paper was published in International Journal of Scientific Research in Engineering and Management (ISSN:2582-3930)."]}
+              buttonText="Read More"
+            />
+            <CustomCardComponent
+              title="Technical Paper"
+              subtitle="2020-21"
+              description="Paper Title:  Some Investigation on Reflux Divider for Analysis of Reflux Ratio"
+              details={["This paper was published in Think India Journal (ISSN:0971-1260)."]}
               buttonText="Read More"
             />
           </Container>
@@ -305,27 +290,27 @@ export default function CareerHighlights() {
         <div>
           <Container>
             <CustomCardComponent
-              title="Sowftware Development Engineer"
+              title="Software Development Engineer"
               subtitle="AppDirect"
-              description="2021 - Present"
+              description="2022 - Present"
               details={[
-                "Another first bullet point.",
-                "Another second bullet point.",
-                "Another third bullet point.",
-                "Another fourth bullet point."
+                "Almost 3 Years experience in the field of software development using Java, React and Kubernetes technologies.",
+                "Hands On Experience in React JS and Java, Spring Boot.",
+                "Hands On Experience in developing powershell based applications for both Windows and Mac.",
+                "Experience in handling and creating TechDesigns of Premium Customer Support Micro Services Architecture.",
+                "Got a chance to work on migration to Kubernetes of microservices architecture."
               ]}
               buttonText="Read More"
             />
 
             <CustomCardComponent
-              title="Career  Details"
-              subtitle="Career Detail 2"
-              description="Another Description"
+              title="Management Trainee"
+              subtitle="Finolex Industries pvt. ltd."
+              description="2019-2020"
               details={[
-                "Another first bullet point.",
-                "Another second bullet point.",
-                "Another third bullet point.",
-                "Another fourth bullet point."
+                "Gained Experience in problem solving skills and Management.",
+                "Got a chance to work as a Line Engineer for PVC production.",
+                "Learn to work more efficiently in closed dead lines."
               ]}
               buttonText="Read More"
             />

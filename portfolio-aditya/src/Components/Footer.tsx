@@ -40,7 +40,7 @@ const Footer = () => {
           </IconButton>
           <IconButton
             component="a"
-            href="https://www.instagram.com/your-instagram-profile"
+            href="https://www.instagram.com/be_like_peje/profilecard/?igsh=cmNsajY5cnRyZnV2"
             target="_blank"
             rel="noopener noreferrer"
             sx={{ color: 'white' }}
