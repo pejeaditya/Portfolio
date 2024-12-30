@@ -68,6 +68,7 @@ export default function ControlCard() {
         autoPlay
         loop
         muted
+        playsInline
         style={{
           position: 'absolute',
           top: 0,
