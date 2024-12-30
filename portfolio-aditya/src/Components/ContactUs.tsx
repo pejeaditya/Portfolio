@@ -344,7 +344,7 @@ export default function ContactUs() {
         </Grid>
         <div style={{ position: "fixed", top: '80px', right: '20px' }}>
           {isSuccess && <Alert severity="success" onClose={() => { setIsSuccess(false) }}>
-            This is a filled success Alert.
+            Thank you, we will contact you shortly..
           </Alert>}
         </div>
       </Container>
