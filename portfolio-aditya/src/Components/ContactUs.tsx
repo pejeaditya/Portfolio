@@ -2,7 +2,7 @@ import { Alert, Button, Container, Typography, useTheme } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import styled from "styled-components";
 import emailjs from '@emailjs/browser';
@@ -80,7 +80,16 @@ export default function ContactUs() {
   font-family: AvenirNextLTPro-Regular;
   font-size: 1.0rem;
 `;
+useEffect(() => {
+  const interval = setInterval(() => {
+    if(isSuccess){
+      setIsSuccess(false);
+      console.log(`is sucess : ${isSuccess}`)
+    }
+  }, 4000); 
 
+  return () => clearInterval(interval);
+}, [isSuccess]);
 
 
   return (
